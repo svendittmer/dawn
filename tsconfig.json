@@ -1,6 +1,9 @@
 {
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
   "files": [
-    "game.ts",
-    "babylon.d.ts"
+    "src/game.ts",
+    "vendor/babylon.d.ts"
   ]
 }
