@@ -27,13 +27,6 @@ class Game {
     // create a basic light, aiming 0,1,0 - meaning, to the sky
     this._light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this._scene);
 
-    // create a built-in "sphere" shape; with 16 segments and diameter of 2
-    let sphere = BABYLON.MeshBuilder.CreateSphere('sphere1',
-      { segments: 16, diameter: 2 }, this._scene);
-
-    // move the sphere upward 1/2 of its height
-    sphere.position.y = 1;
-
     // create a built-in "ground" shape
     let ground = BABYLON.MeshBuilder.CreateGround('ground1',
       { width: 6, height: 6, subdivisions: 2 }, this._scene);
@@ -45,6 +38,10 @@ class Game {
     // materialGround.diffuseTexture.vScale = 5.0; // Repeat 5 times on the Horizontal Axes
     materialGround.backFaceCulling = false; // Always show the front and the back of an element
     ground.material = materialGround;
+
+    BABYLON.SceneLoader.ImportMesh("", "meshes/", "pirate-ship.babylon", this._scene,
+      function(newMeshes, particleSystems, skeletons) {}
+    );
 
   }
 
