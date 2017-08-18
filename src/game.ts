@@ -37,6 +37,15 @@ class Game {
     // create a built-in "ground" shape
     let ground = BABYLON.MeshBuilder.CreateGround('ground1',
       { width: 6, height: 6, subdivisions: 2 }, this._scene);
+
+    // apply a texture to the ground
+    let materialGround = new BABYLON.StandardMaterial("texturePlane", this._scene);
+    materialGround.diffuseTexture = new BABYLON.Texture("textures/grass.jpg", this._scene);
+    // materialGround.diffuseTexture.uScale = 5.0; // Repeat 5 times on the Vertical Axes
+    // materialGround.diffuseTexture.vScale = 5.0; // Repeat 5 times on the Horizontal Axes
+    materialGround.backFaceCulling = false; // Always show the front and the back of an element
+    ground.material = materialGround;
+
   }
 
   animate(): void {
