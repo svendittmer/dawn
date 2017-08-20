@@ -5,6 +5,6 @@
   },
   "files": [
     "src/game.ts",
-    "vendor/babylon.d.ts"
+    "node_modules/babylonjs/dist/preview release/babylon.d.ts"
   ]
 }

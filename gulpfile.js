@@ -11,6 +11,12 @@ gulp.task('compile', function() {
     .js.pipe(gulp.dest("dist"));
 });
 
+// copy babylon.js to dist
+gulp.task('copy', function () {
+  return gulp.src('node_modules/babylonjs/dist/preview release/babylon.js')
+    .pipe(gulp.dest('dist'));
+})
+
 // watch files for changes and reload
 gulp.task('serve', function() {
   browserSync({
@@ -24,4 +30,4 @@ gulp.task('serve', function() {
 });
 
 // Start Server, recompile and reload browser on file change
-gulp.task('default', ['compile', 'serve']);
+gulp.task('default', ['copy', 'compile', 'serve']);
