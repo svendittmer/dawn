@@ -24,10 +24,6 @@ class Game {
     // attach the camera to the canvas
     this._camera.attachControl(this._canvas, false);
 
-    // this._scene.registerBeforeRender(() => {
-    //   this._scene.activeCamera.position.y = 10;
-    // });
-
     // create a basic light, aiming 0,1,0 - meaning, to the sky
     this._light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this._scene);
 

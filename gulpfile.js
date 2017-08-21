@@ -29,5 +29,8 @@ gulp.task('serve', function() {
   gulp.watch(['src/*.ts'], {cwd: '.'}, ['compile', reload]);
 });
 
+// Build project
+gulp.task('build', ['copy', 'compile']);
+
 // Start Server, recompile and reload browser on file change
-gulp.task('default', ['copy', 'compile', 'serve']);
+gulp.task('default', ['build', 'serve']);
