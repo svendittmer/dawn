@@ -39,15 +39,19 @@ class Game {
     materialGround.backFaceCulling = false; // Always show the front and the back of an element
     ground.material = materialGround;
 
+    // import ship
     BABYLON.SceneLoader.ImportMesh("", "meshes/", "pirate-ship.babylon", this._scene,
-      function(newMeshes, particleSystems, skeletons) {
+      (newMeshes, particleSystems, skeletons) => {
         let ship = newMeshes[0];
-        newMeshes[1].setParent(ship);
-        newMeshes[2].setParent(ship);
         ship.position.x = -6;
+
+        // add blink effect on click on ship
+        ship.actionManager = new BABYLON.ActionManager(this._scene);
+        var action = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, ship, "visibility", 0.2, 1000);
+        var action2 = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, ship, "visibility", 1.0, 1000);
+        ship.actionManager.registerAction(action).then(action2);
       }
     );
-
   }
 
   animate(): void {
