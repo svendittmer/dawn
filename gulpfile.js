@@ -35,7 +35,7 @@ gulp.task('serve', function() {
   });
 
   // Watch for file changes
-  gulp.watch(['src/*.ts'], {cwd: '.'}, ['compile', reload]);
+  gulp.watch(['src/**/*.ts'], {cwd: '.'}, ['compile', reload]);
 });
 
 // Build project

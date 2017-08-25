@@ -1,4 +1,5 @@
 import Map from "./map";
+import Ship from "./units/ship";
 
 class Game {
   private _canvas: HTMLCanvasElement;
@@ -7,6 +8,7 @@ class Game {
   private _camera: BABYLON.FreeCamera;
   private _light: BABYLON.Light;
   private _map: Map;
+  private _units: [Ship];
 
   constructor(canvasElement: string) {
     // Create canvas and engine
@@ -20,21 +22,9 @@ class Game {
 
     this.initializeCamera();
     this.initializeLight();
+
     this._map = new Map(this._scene);
-
-    // import ship
-    BABYLON.SceneLoader.ImportMesh("", "meshes/", "pirate-ship.babylon", this._scene,
-      (newMeshes, particleSystems, skeletons) => {
-        let ship = newMeshes[0];
-        ship.position.x = -6;
-
-        // add blink effect on click on ship
-        ship.actionManager = new BABYLON.ActionManager(this._scene);
-        var action = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, ship, "visibility", 0.2, 1000);
-        var action2 = new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPickTrigger, ship, "visibility", 1.0, 1000);
-        ship.actionManager.registerAction(action).then(action2);
-      }
-    );
+    this._units = [new Ship(this._scene), new Ship(this._scene)];
   }
 
   animate(): void {
