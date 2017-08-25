@@ -22,7 +22,7 @@ gulp.task('compile', function() {
 
 // copy babylon.js to dist
 gulp.task('copy', function () {
-  return gulp.src('node_modules/babylonjs/dist/preview release/babylon.js')
+  return gulp.src(['node_modules/babylonjs/dist/preview release/babylon.js', 'node_modules/handjs/hand.min.js'])
     .pipe(gulp.dest('dist'));
 })
 
