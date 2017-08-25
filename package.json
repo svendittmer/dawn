@@ -18,9 +18,12 @@
   "homepage": "https://github.com/svendittmer/sea-traders#readme",
   "devDependencies": {
     "browser-sync": "^2.18.13",
+    "browserify": "^14.4.0",
     "gulp": "^3.9.1",
-    "gulp-typescript": "^3.2.1",
-    "typescript": "^2.5.1"
+    "gulp-typescript": "^3.2.2",
+    "tsify": "^3.0.1",
+    "typescript": "^2.5.1",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "babylonjs": "^3.0.7"

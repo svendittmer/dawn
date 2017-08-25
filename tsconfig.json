@@ -1,12 +1,14 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "module": "commonjs",
     "noImplicitAny": true,
     "target": "es5",
     "outDir": "dist"
   },
   "files": [
     "src/game.ts",
+    "src/units/ship.ts",
     "node_modules/babylonjs/dist/preview release/babylon.d.ts"
   ]
 }

@@ -1,14 +1,23 @@
 var gulp = require('gulp');
-var ts = require("gulp-typescript");
-var tsProject = ts.createProject("tsconfig.json");
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+var browserify = require("browserify");
+var source = require('vinyl-source-stream');
+var tsify = require("tsify");
 
 // compile project
 gulp.task('compile', function() {
-  return tsProject.src()
-    .pipe(tsProject())
-    .js.pipe(gulp.dest("dist"));
+  return browserify({
+      basedir: '.',
+      debug: true,
+      entries: ['src/game.ts'],
+      cache: {},
+      packageCache: {}
+  })
+  .plugin(tsify)
+  .bundle()
+  .pipe(source('game.js'))
+  .pipe(gulp.dest("dist"));
 });
 
 // copy babylon.js to dist
