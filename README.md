@@ -5,7 +5,7 @@ A trading simulation game
 ```sh
 $ git clone https://github.com/svendittmer/sea-traders
 $ cd sea-traders
-$ npm install
+$ yarn install
 ```
 
 ## Run development server
