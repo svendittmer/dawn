@@ -56,7 +56,6 @@ class Game {
   }
 
   private initializeUnits() {
-    this._units = [] as [Ship];
     BABYLON.SceneLoader.ImportMesh("", "meshes/", "pirate-ship.babylon", this._scene,
       (newMeshes, particleSystems, skeletons) => {
         const meshes: [BABYLON.Mesh] = [] as [BABYLON.Mesh];
@@ -72,9 +71,7 @@ class Game {
           meshes.push(newMesh);
         }
 
-        meshes.forEach((newMesh) => {
-          this._units.push(new Ship(newMesh, this._scene));
-        });
+        this._units = meshes.map((newMesh) => new Ship(newMesh, this._scene)) as [Ship];
       },
     );
   }
