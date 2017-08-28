@@ -1,3 +1,5 @@
+import Ship from "./units/ship";
+
 export default class Map {
   private _mesh: BABYLON.Mesh;
 
@@ -13,5 +15,13 @@ export default class Map {
     // material.diffuseTexture.vScale = 5.0; // Repeat 5 times on the Horizontal Axes
     material.backFaceCulling = false; // Always show the front and the back of an element
     this._mesh.material = material;
+
+    // add blink effect on click on ship
+    this._mesh.actionManager = new BABYLON.ActionManager(scene);
+
+    const clearSelectionAction = new BABYLON.ExecuteCodeAction(
+      BABYLON.ActionManager.OnPickTrigger, () => { Ship.clearSelection(); });
+
+    this._mesh.actionManager.registerAction(clearSelectionAction);
   }
 }
