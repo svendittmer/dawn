@@ -24,7 +24,7 @@ class Game {
     this.initializeLight();
 
     this._map = new Map(this._scene);
-    this._units = [new Ship(this._scene), new Ship(this._scene)];
+    this.initializeUnits();
   }
 
   animate(): void {
@@ -53,6 +53,30 @@ class Game {
   private initializeLight(): void {
     // create a basic light, aiming 0,1,0 - meaning, to the sky
     this._light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), this._scene);
+  }
+
+  private initializeUnits() {
+    this._units = <[Ship]>[];
+    BABYLON.SceneLoader.ImportMesh("", "meshes/", "pirate-ship.babylon", this._scene,
+      (newMeshes, particleSystems, skeletons) => {
+        let meshes: [BABYLON.Mesh] = <[BABYLON.Mesh]>[];
+        let mesh = <BABYLON.Mesh>newMeshes[0];
+        meshes.push(mesh);
+        mesh.position.x = -11;
+        mesh.position.z = -5;
+
+        for (let index = 1; index < 5; index++) {
+          let newMesh = mesh.clone("i" + index);
+          newMesh.position.x += 2 * index;
+          newMesh.position.z -= index * 3;
+          meshes.push(newMesh);
+        }
+
+        meshes.forEach((newMesh) => {
+          this._units.push(new Ship(newMesh, this._scene));
+        })
+      }
+    );
   }
 }
 
