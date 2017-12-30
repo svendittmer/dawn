@@ -1,14 +1,9 @@
-import Map from "./map";
-import Ship from "./units/ship";
-
 class Game {
   private _canvas: HTMLCanvasElement;
   private _engine: BABYLON.Engine;
   private _scene: BABYLON.Scene;
   private _camera: BABYLON.FreeCamera;
   private _light: BABYLON.Light;
-  private _map: Map;
-  private _units: [Ship];
 
   constructor(canvasElement: string) {
     // Create canvas and engine
@@ -23,7 +18,6 @@ class Game {
     this.initializeCamera();
     this.initializeLight();
 
-    this._map = new Map(this._scene);
     this.initializeUnits();
   }
 
@@ -56,22 +50,20 @@ class Game {
   }
 
   private initializeUnits() {
-    BABYLON.SceneLoader.ImportMesh("", "meshes/", "pirate-ship.babylon", this._scene,
+    BABYLON.SceneLoader.ImportMesh("", "meshes/", "spaceship.babylon", this._scene,
       (newMeshes, particleSystems, skeletons) => {
-        const meshes: [BABYLON.Mesh] = [] as [BABYLON.Mesh];
         const mesh = newMeshes[0] as BABYLON.Mesh;
+        const meshes: [BABYLON.Mesh] = [mesh] as [BABYLON.Mesh];
         meshes.push(mesh);
         mesh.position.x = -11;
         mesh.position.z = -5;
 
         for (let index = 1; index < 5; index++) {
           const newMesh = mesh.clone("i" + index);
-          newMesh.position.x += 2 * index;
-          newMesh.position.z -= index * 3;
+          newMesh.position.x += 3 * index;
+          newMesh.position.z -= index * 4;
           meshes.push(newMesh);
         }
-
-        this._units = meshes.map((newMesh) => new Ship(newMesh, this._scene)) as [Ship];
       },
     );
   }

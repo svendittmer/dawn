@@ -1,4 +1,4 @@
-# Sea-traders
+# Dawn
 A trading simulation game
 
 ## Requirements
@@ -8,8 +8,8 @@ A trading simulation game
 
 ## Install
 ```sh
-$ git clone https://github.com/svendittmer/sea-traders
-$ cd sea-traders
+$ git clone https://github.com/svendittmer/dawn
+$ cd dawn
 $ yarn install
 ```
 
