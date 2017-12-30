@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/svendittmer/dawn#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "browserify": "^14.4.0",
+    "browser-sync": "^2.23.1",
+    "browserify": "^14.5.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.2",
     "tsify": "^3.0.1",
     "tslint": "^5.8.0",
-    "typescript": "^2.5.1",
-    "vinyl-source-stream": "^1.1.0"
+    "typescript": "^2.6.2",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
     "babylonjs": "^3.0.7",
