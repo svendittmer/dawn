@@ -1,5 +1,6 @@
 import {
-  AbstractMesh, Animation, Engine, HemisphericLight, Light, Scene, SceneLoader, UniversalCamera, Vector3,
+  AbstractMesh, Animation, ArcFollowCamera, ArcRotateCamera, Engine, HemisphericLight, Light, Scene, SceneLoader,
+  Vector3,
 } from "babylonjs";
 import { Ship } from "./units/ship";
 
@@ -7,7 +8,7 @@ class Game {
   private _canvas: HTMLCanvasElement;
   private _engine: Engine;
   private _scene: Scene;
-  private _camera: UniversalCamera;
+  private _camera: ArcRotateCamera;
   private _light: Light;
   private _plane: AbstractMesh;
   private _units: Ship[] = [];
@@ -29,11 +30,12 @@ class Game {
   }
 
   public animate(): void {
-    // run update within render loop
+    // run update before each render loop
     // http://gameprogrammingpatterns.com/update-method.html
     this._scene.registerBeforeRender(() => {
       for (const unit of this._units) {
         unit.update();
+        this._camera.setTarget(unit.position());
       }
     });
 
@@ -51,10 +53,7 @@ class Game {
 
   private initializeCamera(): void {
     // create a FreeCamera, and set its position to (x:0, y:5, z:-10)
-    this._camera = new UniversalCamera("camera1", new Vector3(0, 5, -10), this._scene);
-
-    // target the camera to scene origin
-    this._camera.setTarget(Vector3.Zero());
+    this._camera = new ArcRotateCamera("camera1", 0, 0, 10, Vector3.Zero(), this._scene);
 
     // attach the camera to the canvas
     this._camera.attachControl(this._canvas, false);
