@@ -230,7 +230,7 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babylonjs@^3.0.7:
+babylonjs@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-3.1.1.tgz#6536c180e4b4006d61c77fcba1a2687dbb296331"
   dependencies:

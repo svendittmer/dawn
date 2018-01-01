@@ -7,9 +7,7 @@
     "sourceMap": true,
     "outDir": "dist"
   },
-  "files": [
-    "src/game.ts",
-    "src/units/ship.ts",
-    "node_modules/babylonjs/dist/preview release/babylon.d.ts"
+  "include": [
+    "src/**/*"
   ]
 }
