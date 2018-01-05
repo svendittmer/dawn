@@ -7,8 +7,8 @@ export class Ship {
 
   constructor(mesh: AbstractMesh) {
     this._mesh = mesh;
-    this._speed = 0.1;
-    this._spin = new Vector3(0.02, 0.01, 0);
+    this._speed = 0;
+    this._spin = new Vector3(0, 0, 0);
   }
 
   // Depending on current direction and spin, updates its mesh's position and rotation
@@ -20,5 +20,21 @@ export class Ship {
 
   public position() {
     return this._mesh.position;
+  }
+
+  public accelerate() {
+    this._speed += 0.1;
+  }
+
+  public decelerate() {
+    this._speed -= 0.1;
+  }
+
+  public turnLeft() {
+    this._spin.y -= 0.01;
+  }
+
+  public turnRight() {
+    this._spin.y += 0.01;
   }
 }
